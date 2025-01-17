@@ -1,3 +1,4 @@
+//Command para deletar um pedido.
 package br.edu.ifsp.dsw1.exav2.controller.command;
 
 import java.io.IOException;
@@ -14,13 +15,13 @@ public class DeleteCommand implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//Recuperação do id do pedido
 		var id = Integer.parseInt(request.getParameter("id"));
 		
 		PedidoDao dao = new PedidoDaoFactory().factory();
 		
-		Pedido pedido = dao.retrive(id);
-		
-		boolean deleted = dao.delete(pedido);
+		//Deletando o pedido.
+		boolean deleted = dao.delete(id);
 		
 		String message;
 		if(deleted) {

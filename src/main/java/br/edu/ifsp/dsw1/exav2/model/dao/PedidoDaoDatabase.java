@@ -151,20 +151,17 @@ public class PedidoDaoDatabase implements PedidoDao {
 	}
 
 	@Override
-	public boolean delete(Pedido pedido) {
-		if(pedido!=null) {
-			int rows = -1;
-			try ( var connection = DatabaseConnection.getConnection();
-				  var preparedStatement = connection.prepareStatement(DELETE)) {
-				preparedStatement.setInt(1, pedido.getId());
+	public boolean delete(int id) {
+		int rows = -1;
+		try ( var connection = DatabaseConnection.getConnection();
+			  var preparedStatement = connection.prepareStatement(DELETE)) {
+			preparedStatement.setInt(1, id);
 
-				rows = preparedStatement.executeUpdate();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			return rows > 0;
+			rows = preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-		return false;
+		return rows > 0;
 	}
 
 }

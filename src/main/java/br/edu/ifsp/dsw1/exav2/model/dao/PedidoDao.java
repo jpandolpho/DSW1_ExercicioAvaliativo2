@@ -11,5 +11,5 @@ public interface PedidoDao {
 	List<Pedido> retrieveAll();
 	List<Pedido> retrieveByName(String name);
 	boolean update (Pedido updatedPedido);
-	boolean delete (Pedido pedido);
+	boolean delete (int id);
 }
