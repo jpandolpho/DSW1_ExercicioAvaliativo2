@@ -6,6 +6,7 @@
 <body>
 	<jsp:include page="includes/navbar.jsp"/>
 	<hr>
+	<!-- Verificando se existe alguma mensagem. -->
 	<%
 	String msg = (String) request.getAttribute("message");
 	if (msg != null ) {
@@ -13,7 +14,7 @@
 	<h1><%=msg%></h1>
 	<hr>
 	<%} %>
-	
+	<!-- Form para cadastrar de novo usuário. -->
 	<form action="pedido.do?action=createUser" method="post">
 		<label for="login">Login</label> 
 		<input type="text" id="login" name="textLogin"

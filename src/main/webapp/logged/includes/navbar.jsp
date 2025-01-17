@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<!-- Quando logado, existem várias opções na nav. -->
 <nav>
 	<a href="<%= request.getContextPath() %>/pedido.do?action=logged">ARQDSW1</a>
 	<a href="<%= request.getContextPath() %>/pedido.do?action=newUser">Novo Usuário</a>

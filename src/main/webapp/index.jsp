@@ -6,14 +6,15 @@
 <body>
 	<jsp:include page="/includes/navbar.jsp"/>
 	<hr>
-	
+	<!-- Verificando se existe alguma mensagem. -->
 	<%
 	String msg = (String) request.getAttribute("message");
 	if (msg != null ) {
 	%>
 	<h1><%=msg%></h1>
+	<hr>
 	<%} %>
-	
+	<!-- Form para login do usuário. -->
 	<form action="<%= request.getContextPath() %>/front.do?action=login" method="post">
 		<label for="login">Login</label> 
 		<input type="text" id="login" name="textLogin"
