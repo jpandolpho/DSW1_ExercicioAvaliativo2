@@ -1,3 +1,4 @@
+//Command para criação de um novo usuário.
 package br.edu.ifsp.dsw1.exav2.controller.command;
 
 import java.io.IOException;
@@ -14,11 +15,13 @@ public class CreateUserCommand implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//Recuperando dados do formulário
 		var login = request.getParameter("textLogin");
 		var senha = request.getParameter("textSenha");
 		
 		UserDao dao = new UserDaoFactory().factory();
 		
+		//Criando novo usuário
 		User user = new User(login,senha);
 		boolean saved = dao.insert(user);
 

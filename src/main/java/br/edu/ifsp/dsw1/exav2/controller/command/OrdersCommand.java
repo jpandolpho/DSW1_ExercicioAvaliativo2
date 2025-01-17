@@ -1,3 +1,4 @@
+//Command para levar o usário a página de relatório
 package br.edu.ifsp.dsw1.exav2.controller.command;
 
 import java.io.IOException;
@@ -15,8 +16,9 @@ public class OrdersCommand implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//Recuperando todos os pedidos cadastrados no banco
 		PedidoDao dao = new PedidoDaoFactory().factory();
-		
+	
 		List<Pedido> pedidos = dao.retrieveAll();
 		request.setAttribute("pedidos", pedidos);
 		

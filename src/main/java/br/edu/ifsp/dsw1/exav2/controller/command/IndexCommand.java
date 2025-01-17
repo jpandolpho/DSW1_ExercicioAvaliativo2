@@ -1,3 +1,4 @@
+//Command para levar o usuário para a index(deslogado).
 package br.edu.ifsp.dsw1.exav2.controller.command;
 
 import java.io.IOException;

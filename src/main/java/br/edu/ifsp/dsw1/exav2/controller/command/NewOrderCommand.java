@@ -1,3 +1,4 @@
+//Command para levar o usuário a página de cadastro de pedidos.
 package br.edu.ifsp.dsw1.exav2.controller.command;
 
 import java.io.IOException;

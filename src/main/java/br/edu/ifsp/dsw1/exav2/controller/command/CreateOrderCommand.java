@@ -1,3 +1,4 @@
+//Command para criação de um novo pedido.
 package br.edu.ifsp.dsw1.exav2.controller.command;
 
 import java.io.IOException;
@@ -15,6 +16,7 @@ public class CreateOrderCommand implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//Recuperando valores do formulário
 		var nome = request.getParameter("textNomeCliente");
 		var endereco = request.getParameter("textEnderecoEntrega");
 		var valor = Double.parseDouble(request.getParameter("textValor"));
@@ -28,10 +30,13 @@ public class CreateOrderCommand implements Command {
 			descricao = null;
 		}
 		
+		//Pegando o usuário da sessão, ele é o responsável por este pedido
+		//e terá seu login salvo junto do pedido.
 		var user = (User) request.getSession(false).getAttribute("user_id");
 		
 		PedidoDao dao = new PedidoDaoFactory().factory();
 		
+		//Criação do pedido
 		Pedido pedido = new Pedido();
 		pedido.setNomeCliente(nome);
 		pedido.setDescricao(descricao);

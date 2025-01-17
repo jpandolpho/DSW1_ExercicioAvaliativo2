@@ -1,3 +1,4 @@
+//Conexão com o banco de dados(pool de conexões).
 package br.edu.ifsp.dsw1.exav2.model.dao.connection;
 
 import java.sql.Connection;
@@ -8,14 +9,10 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 public class DatabaseConnection {
-	private static final String URL = "jdbc:mysql://localhost:3306/users_db";
-	
-	private static final String USER = "root";
-	private static final String PASSWORD = "root";
-	
 	private DatabaseConnection() {
 	}
 	
+	//Indicando qual o recurso a ser utilizado
 	private static final String RESOURCE = "java:/comp/env/jdbc/mysql";
 
 	public static Connection getConnection() throws SQLException {

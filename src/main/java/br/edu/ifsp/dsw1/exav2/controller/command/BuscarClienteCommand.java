@@ -1,3 +1,4 @@
+//Command que busca os pedidos de um cliente informado pelo usuário.
 package br.edu.ifsp.dsw1.exav2.controller.command;
 
 import java.io.IOException;

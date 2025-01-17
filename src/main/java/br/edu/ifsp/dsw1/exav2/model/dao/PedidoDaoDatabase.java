@@ -1,3 +1,4 @@
+//Implementação de Dao, para armazenar os dados em Banco de Dados relacional.
 package br.edu.ifsp.dsw1.exav2.model.dao;
 
 import java.sql.SQLException;
@@ -8,6 +9,7 @@ import br.edu.ifsp.dsw1.exav2.model.dao.connection.DatabaseConnection;
 import br.edu.ifsp.dsw1.exav2.model.entity.Pedido;
 import br.edu.ifsp.dsw1.exav2.model.entity.User;
 
+//Estrutura da tabela de pedidos
 /*CREATE TABLE tb_orders(
     idpedidos INT PRIMARY KEY AUTO_INCREMENT,
     nomeCliente VARCHAR(145) NOT NULL,
@@ -21,6 +23,7 @@ import br.edu.ifsp.dsw1.exav2.model.entity.User;
 
 public class PedidoDaoDatabase implements PedidoDao {
 	
+	//Prepared Statements
 	private static final String INSERT = "INSERT INTO tb_orders(nomeCliente,enderecoEntrega,valor,descricao,login) VALUES (?,?,?,?,?)";
 	private static final String SELECT_BY_ID = "SELECT * FROM tb_orders WHERE idpedidos=?";
 	private static final String SELECT_ALL = "SELECT * FROM tb_orders";
@@ -35,6 +38,7 @@ public class PedidoDaoDatabase implements PedidoDao {
 			try(var connection = DatabaseConnection.getConnection();
 				var preparedStatement = connection.prepareStatement(INSERT)){
 				
+				//Inserindo parametros no statement
 				preparedStatement.setString(1, pedido.getNomeCliente());
 				preparedStatement.setString(2, pedido.getEnderecoEntrega());
 				preparedStatement.setDouble(3, pedido.getValor());
@@ -56,9 +60,11 @@ public class PedidoDaoDatabase implements PedidoDao {
 		if(id>0) {
 			try(var connection = DatabaseConnection.getConnection();
 					var preparedStatement = connection.prepareStatement(SELECT_BY_ID)){
+				
 				preparedStatement.setInt(1, id);
 				
 				var result = preparedStatement.executeQuery();
+				//Verificando resultado da consulta, sempre retorna um único valor
 				if(result.next()) {
 					pedido = new Pedido();
 					pedido.setId(result.getInt("idpedidos"));
@@ -84,6 +90,7 @@ public class PedidoDaoDatabase implements PedidoDao {
 			
 			var result = preparedStatement.executeQuery();
 			
+			//Verificando resultado da consulta, retorna zero ou mais valores
 			while(result.next()) {
 				var pedido = new Pedido();
 				pedido.setId(result.getInt("idpedidos"));
@@ -135,17 +142,17 @@ public class PedidoDaoDatabase implements PedidoDao {
 			try(var connection = DatabaseConnection.getConnection();
 					var preparedStatement = connection.prepareStatement(UPDATE)){
 					
-					preparedStatement.setString(1, updatedPedido.getNomeCliente());
-					preparedStatement.setString(2, updatedPedido.getEnderecoEntrega());
-					preparedStatement.setDouble(3, updatedPedido.getValor());
-					preparedStatement.setString(4, updatedPedido.getDescricao());
-					preparedStatement.setInt(5, updatedPedido.getId());
+				preparedStatement.setString(1, updatedPedido.getNomeCliente());
+				preparedStatement.setString(2, updatedPedido.getEnderecoEntrega());
+				preparedStatement.setDouble(3, updatedPedido.getValor());
+				preparedStatement.setString(4, updatedPedido.getDescricao());
+				preparedStatement.setInt(5, updatedPedido.getId());
 					
 					rows = preparedStatement.executeUpdate();
-				}catch(SQLException e) {
+			}catch(SQLException e) {
 					e.printStackTrace();
-				}
-				return rows > 0;
+			}
+			return rows > 0;
 		}
 		return false;
 	}
@@ -155,6 +162,7 @@ public class PedidoDaoDatabase implements PedidoDao {
 		int rows = -1;
 		try ( var connection = DatabaseConnection.getConnection();
 			  var preparedStatement = connection.prepareStatement(DELETE)) {
+			
 			preparedStatement.setInt(1, id);
 
 			rows = preparedStatement.executeUpdate();

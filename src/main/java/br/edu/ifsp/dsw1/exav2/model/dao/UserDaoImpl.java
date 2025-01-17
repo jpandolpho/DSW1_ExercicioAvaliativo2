@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import br.edu.ifsp.dsw1.exav2.model.dao.connection.DatabaseConnection;
 import br.edu.ifsp.dsw1.exav2.model.entity.User;
 
+//Estrutura da tabela de usuários
 /*CREATE TABLE tb_users (
     login VARCHAR(50) PRIMARY KEY,
     senha VARCHAR(45)
@@ -12,6 +13,7 @@ import br.edu.ifsp.dsw1.exav2.model.entity.User;
 */
 public class UserDaoImpl implements UserDao {
 	
+	//Prepared Statements
 	private static final String INSERT = "INSERT INTO tb_users(login,senha) VALUES (?,?)";
 	private static final String SELECT_BY_LOGIN = "SELECT * FROM tb_users WHERE login=?";
 
