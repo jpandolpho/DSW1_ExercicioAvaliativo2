@@ -8,7 +8,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 public class DatabaseConnection {
-	private static final String URL = "jdbc:mysql://localhost:3307/users_db";
+	private static final String URL = "jdbc:mysql://localhost:3306/users_db";
 	
 	private static final String USER = "root";
 	private static final String PASSWORD = "root";

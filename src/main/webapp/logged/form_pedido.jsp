@@ -28,19 +28,15 @@
 			
 		<label for="valor">Valor</label> 
 		<input type="number" id="valor" name="textValor"
-			placeholder="Digite o valor." required="required" min="0">
+			placeholder="Digite o valor." required="required" min="0" step="0.01">
 		
 		<br/><br/>
 		
-		<label for="descricao">Valor</label> 
+		<label for="descricao">Descricao</label> 
 		<input type="text" id="descricao" name="textDescricao"
 			placeholder="Digite o endereço de entrega.">
 		
 		<br/><br/>
-		<input type="hidden" name="login" value="<%
-			var user = request.getParameter("login");
-			out.println(user);
-		%>">
 		<button type="submit" style="text-align: center;">Cadastrar</button>
 	</form>
 </body>

@@ -9,14 +9,14 @@ import br.edu.ifsp.dsw1.exav2.model.entity.Pedido;
 import br.edu.ifsp.dsw1.exav2.model.entity.User;
 
 /*CREATE TABLE tb_orders(
-    -> idpedidos INT PRIMARY KEY AUTO_INCREMENT,
-    -> nomeCliente VARCHAR(145) NOT NULL,
-    -> enderecoEntrega VARCHAR(200),
-    -> valor DECIMAL(10,2) NOT NULL,
-    -> descricao VARCHAR(300),
-    -> login VARCHAR(50) NOT NULL,
-    -> FOREIGN KEY (login) REFERENCES tb_users(login) ON DELETE CASCADE
-    -> );
+    idpedidos INT PRIMARY KEY AUTO_INCREMENT,
+    nomeCliente VARCHAR(145) NOT NULL,
+    enderecoEntrega VARCHAR(200),
+    valor DECIMAL(10,2) NOT NULL,
+    descricao VARCHAR(300),
+    login VARCHAR(50) NOT NULL,
+    FOREIGN KEY (login) REFERENCES tb_users(login) ON DELETE CASCADE
+    );
 */
 
 public class PedidoDaoDatabase implements PedidoDao {

@@ -12,8 +12,6 @@ public class NewOrderCommand implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		var session = request.getSession(false);
-		request.setAttribute("login", ((User)session.getAttribute("user_id")).getLogin());
 		return "/logged/form_pedido.jsp";
 	}
 

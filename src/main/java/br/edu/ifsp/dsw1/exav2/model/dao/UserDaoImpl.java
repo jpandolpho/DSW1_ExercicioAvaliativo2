@@ -6,9 +6,9 @@ import br.edu.ifsp.dsw1.exav2.model.dao.connection.DatabaseConnection;
 import br.edu.ifsp.dsw1.exav2.model.entity.User;
 
 /*CREATE TABLE tb_users (
-    -> login VARCHAR(50) PRIMARY KEY,
-    -> senha VARCHAR(45)
-    -> );
+    login VARCHAR(50) PRIMARY KEY,
+    senha VARCHAR(45)
+    );
 */
 public class UserDaoImpl implements UserDao {
 	
