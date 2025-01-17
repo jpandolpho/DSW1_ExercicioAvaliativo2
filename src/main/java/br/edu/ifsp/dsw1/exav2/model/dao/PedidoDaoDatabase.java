@@ -92,6 +92,7 @@ public class PedidoDaoDatabase implements PedidoDao {
 				pedido.setValor(result.getDouble("valor"));
 				pedido.setDescricao(result.getString("descricao"));
 				pedido.setLogin(result.getString("login"));
+				pedidos.add(pedido);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -118,6 +119,7 @@ public class PedidoDaoDatabase implements PedidoDao {
 				pedido.setValor(result.getDouble("valor"));
 				pedido.setDescricao(result.getString("descricao"));
 				pedido.setLogin(result.getString("login"));
+				pedidos.add(pedido);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -137,6 +139,7 @@ public class PedidoDaoDatabase implements PedidoDao {
 					preparedStatement.setString(2, updatedPedido.getEnderecoEntrega());
 					preparedStatement.setDouble(3, updatedPedido.getValor());
 					preparedStatement.setString(4, updatedPedido.getDescricao());
+					preparedStatement.setInt(5, updatedPedido.getId());
 					
 					rows = preparedStatement.executeUpdate();
 				}catch(SQLException e) {

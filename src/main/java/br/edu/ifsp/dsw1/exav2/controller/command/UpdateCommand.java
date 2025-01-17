@@ -1,7 +1,6 @@
 package br.edu.ifsp.dsw1.exav2.controller.command;
 
 import java.io.IOException;
-import java.util.List;
 
 import br.edu.ifsp.dsw1.exav2.model.dao.PedidoDao;
 import br.edu.ifsp.dsw1.exav2.model.dao.PedidoDaoFactory;
@@ -10,17 +9,20 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class OrdersCommand implements Command {
+public class UpdateCommand implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		var id = Integer.parseInt(request.getParameter("id"));
+		
 		PedidoDao dao = new PedidoDaoFactory().factory();
 		
-		List<Pedido> pedidos = dao.retrieveAll();
-		request.setAttribute("pedidos", pedidos);
+		Pedido pedido = dao.retrive(id);
 		
-		return "/logged/relatorio.jsp";
+		request.setAttribute("pedido", pedido);
+		
+		return "/logged/update.jsp";
 	}
 
 }

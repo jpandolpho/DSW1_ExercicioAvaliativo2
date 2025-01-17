@@ -2,14 +2,18 @@ package br.edu.ifsp.dsw1.exav2.controller;
 
 import java.io.IOException;
 
+import br.edu.ifsp.dsw1.exav2.controller.command.BuscarClienteCommand;
 import br.edu.ifsp.dsw1.exav2.controller.command.Command;
+import br.edu.ifsp.dsw1.exav2.controller.command.CommitUpdateCommand;
 import br.edu.ifsp.dsw1.exav2.controller.command.CreateOrderCommand;
 import br.edu.ifsp.dsw1.exav2.controller.command.CreateUserCommand;
+import br.edu.ifsp.dsw1.exav2.controller.command.DeleteCommand;
 import br.edu.ifsp.dsw1.exav2.controller.command.LoggedCommand;
 import br.edu.ifsp.dsw1.exav2.controller.command.LogoutCommand;
 import br.edu.ifsp.dsw1.exav2.controller.command.NewOrderCommand;
 import br.edu.ifsp.dsw1.exav2.controller.command.NewUserCommand;
 import br.edu.ifsp.dsw1.exav2.controller.command.OrdersCommand;
+import br.edu.ifsp.dsw1.exav2.controller.command.UpdateCommand;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -46,6 +50,14 @@ public class PedidoServlet extends HttpServlet {
 			command = new CreateUserCommand();
 		}else if("createOrder".equals(action)) {
 			command = new CreateOrderCommand();
+		}else if("buscarCliente".equals(action)) {
+			command = new BuscarClienteCommand();
+		}else if("update".equals(action)) {
+			command = new UpdateCommand();
+		}else if("commitUpdate".equals(action)) {
+			command = new CommitUpdateCommand();
+		}else if("delete".equals(action)) {
+			command = new DeleteCommand();
 		}
 		
 		String view = command.execute(request,response);

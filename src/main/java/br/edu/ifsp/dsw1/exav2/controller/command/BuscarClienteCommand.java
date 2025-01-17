@@ -10,14 +10,16 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class OrdersCommand implements Command {
+public class BuscarClienteCommand implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		var cliente = request.getParameter("textBusca");
+		
 		PedidoDao dao = new PedidoDaoFactory().factory();
 		
-		List<Pedido> pedidos = dao.retrieveAll();
+		List<Pedido> pedidos = dao.retrieveByName(cliente);
 		request.setAttribute("pedidos", pedidos);
 		
 		return "/logged/relatorio.jsp";

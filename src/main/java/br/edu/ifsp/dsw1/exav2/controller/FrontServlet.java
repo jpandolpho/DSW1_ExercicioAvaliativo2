@@ -16,12 +16,20 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/front.do")
 public class FrontServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static boolean flag = false;
        
     public FrontServlet() {
         super();
-        User user = new User("admin","admin");
-        var dao = new UserDaoFactory().factory();
-        System.out.println(dao.insert(user));
+        if(!flag) {
+	        var dao = new UserDaoFactory().factory();
+	        User user = dao.findByLogin("admin");
+	        if(user==null) {
+	        	user = new User("admin","admin");
+	        	flag = dao.insert(user);
+	        }else {
+	        	flag = true;
+	        }
+        }
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

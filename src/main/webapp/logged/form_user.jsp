@@ -11,6 +11,7 @@
 	if (msg != null ) {
 	%>
 	<h1><%=msg%></h1>
+	<hr>
 	<%} %>
 	
 	<form action="pedido.do?action=createUser" method="post">

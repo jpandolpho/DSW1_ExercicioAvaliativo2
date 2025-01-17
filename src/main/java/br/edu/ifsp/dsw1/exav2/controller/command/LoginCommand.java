@@ -30,7 +30,7 @@ public class LoginCommand implements Command {
 			view = "pedido.do?action=logged";
 		}else {
 			request.setAttribute("message", "Usuario não reconhecido.");
-			view = "front.do?action=index";
+			view = "/front.do?action=index";
 		}
 		return view;
 	}
