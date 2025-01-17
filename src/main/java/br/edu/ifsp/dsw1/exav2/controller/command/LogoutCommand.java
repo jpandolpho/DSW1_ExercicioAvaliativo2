@@ -11,8 +11,12 @@ public class LogoutCommand implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		return null;
+		var session = request.getSession(false);
+		if (session != null) {
+			session.invalidate();
+		}
+		
+		return "index.jsp";
 	}
 
 }

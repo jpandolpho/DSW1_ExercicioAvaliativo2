@@ -3,6 +3,7 @@ package br.edu.ifsp.dsw1.exav2.controller;
 import java.io.IOException;
 
 import br.edu.ifsp.dsw1.exav2.controller.command.Command;
+import br.edu.ifsp.dsw1.exav2.controller.command.CreateUserCommand;
 import br.edu.ifsp.dsw1.exav2.controller.command.LoggedCommand;
 import br.edu.ifsp.dsw1.exav2.controller.command.LogoutCommand;
 import br.edu.ifsp.dsw1.exav2.controller.command.NewOrderCommand;
@@ -40,6 +41,8 @@ public class PedidoServlet extends HttpServlet {
 			command = new OrdersCommand();
 		}else if("logout".equals(action)) {
 			command = new LogoutCommand();
+		}else if("createUser".equals(action)) {
+			command = new CreateUserCommand();
 		}
 		
 		String view = command.execute(request,response);
